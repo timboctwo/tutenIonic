@@ -1,0 +1,7 @@
+{
+  "name": "tutenIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
