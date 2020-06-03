@@ -25,3 +25,22 @@
 #container a {
   text-decoration: none;
 }
+
+ion-item{
+  border:1px solid white ;
+  ion-label{
+    display: inline-block;
+    text-align: center;
+    padding-top: 16px;  
+    margin: 0;
+    height: 100%;
+    border-right: 1px solid white ;
+  }
+}
+
+ion-select, ion-input { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  --placeholder-color: #8c8c8c;
+  color: white;
+  --placeholder-opacity: 1;
+  background-color: #0a0a0a;
+}

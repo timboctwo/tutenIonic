@@ -1,20 +1,78 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <h1>Booking List</h1>
+    <ion-grid>
+      <ion-col>
+        
+        <ion-row>
+        <ion-card style="width: 100%; margin: 1% 15% 0 15%;">
+          <ion-card-header>
+            <ion-card-title>Tabla a filtrar</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-select [(ngModel)]="tableParam" placeholder="Selecciona la tabla...">
+              <ion-select-option value="bookingId">Booking Id</ion-select-option>
+              <ion-select-option value="price">Precio</ion-select-option>
+            </ion-select>
+            <ion-button shape="round" color="warning" (click)="restoreDisplayedData()">Limpiar Filtros</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+
+        <ion-row>
+          <ion-card style="width: 100%; margin: 1% 15% 0 15%;">
+            <ion-card-header>
+              <ion-card-title>Menor que - Mayor que</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+
+                  <ion-col>
+                    <ion-input type="number" placeholder="Menor que..." [(ngModel)]="minValue"></ion-input>
+                  </ion-col>
+
+                  <ion-col>
+                    <ion-input type="number" placeholder="Mayor que..." [(ngModel)]="maxValue"></ion-input>
+                  </ion-col>
+
+                </ion-row>
+                <ion-button (click)="comparationFilter()" shape="round">Filtar</ion-button>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+
+        <ion-row>
+          <ion-card style="width: 100%; margin: 1% 15% 0 15%;">
+            <ion-card-header>
+              <ion-card-title>Buscador</ion-card-title>
+              <ion-input type="text" placeholder="parametro a buscar" [(ngModel)]="searchValue"></ion-input>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button (click)="searchFilter()" shape="round">Buscar</ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-row>
+
+      </ion-col>
+    </ion-grid>
+    
+    <ion-list style="margin: 16px;">
+      <ion-list-header style="padding: 0;">
+        <ion-label><h2>Booking Id</h2></ion-label>
+        <ion-label><h2>Cliente</h2></ion-label>
+        <ion-label><h2>Fecha de Creación</h2></ion-label>
+        <ion-label><h2>Dirección</h2></ion-label>
+        <ion-label><h2>Precio</h2></ion-label>
+      </ion-list-header>
+      <ion-item class="bordered-item" *ngFor="let booking of displayedBookingList">
+        <ion-label>{{booking.bookingId}}</ion-label>
+        <ion-label>{{booking.cliente}}</ion-label>
+        <ion-label>{{booking.fechaCreacion}}</ion-label>
+        <ion-label>{{booking.direccion}}</ion-label>
+        <ion-label>{{booking.precio}}</ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
